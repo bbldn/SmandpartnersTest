@@ -6,9 +6,11 @@ use App\Domain\Common\Domain\Entity\Base\Comment;
 use App\Domain\Common\Infrastructure\Repository\Base\CommentRepository as Base;
 use App\Domain\Main\Application\QueryHandler\CommentList\Repository\CommentRepository as CommentRepositoryCommentList;
 use App\Domain\Main\Application\CommandHandler\RemoveCommentById\CommentRemover\Repository\CommentRepository as CommentRepositoryCommentRemover;
+use App\Domain\Main\Application\CommandHandler\CreateOrUpdateComment\CommentCreator\Repository\CommentRepository as CommentRepositoryCommentCreator;
 
 class CommentRepository extends Base implements
     CommentRepositoryCommentList,
+    CommentRepositoryCommentCreator,
     CommentRepositoryCommentRemover
 {
     /**
