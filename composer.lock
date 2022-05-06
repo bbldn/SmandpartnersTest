@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20fe2310a900e36a7b38566e0b05a154",
+    "content-hash": "32c5272f805ac81d95487e20b238669e",
     "packages": [
+        {
+            "name": "bbldn/cqrs-bundle",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bbldn/cqrs-bundle.git",
+                "reference": "2090be13741cdb0e03e04112c0c70f5cca6952a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bbldn/cqrs-bundle/zipball/2090be13741cdb0e03e04112c0c70f5cca6952a9",
+                "reference": "2090be13741cdb0e03e04112c0c70f5cca6952a9",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/annotations": "^1.13",
+                "php": ">=7.4",
+                "symfony/dependency-injection": "^5.0|^6.0",
+                "symfony/http-kernel": "^5.0|^6.0",
+                "symfony/polyfill-php80": "^1.25"
+            },
+            "require-dev": {
+                "vimeo/psalm": "^4.22"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BBLDN\\CQRSBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Boris Bobol",
+                    "email": "bobol.boris@gmail.com"
+                }
+            ],
+            "description": "CQRS implementation",
+            "support": {
+                "issues": "https://github.com/bbldn/cqrs-bundle/issues",
+                "source": "https://github.com/bbldn/cqrs-bundle/tree/0.1.0"
+            },
+            "time": "2022-05-06T04:46:50+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "1.13.2",
