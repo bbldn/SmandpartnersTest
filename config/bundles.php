@@ -6,4 +6,5 @@ return [
     Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     BBLDN\CQRSBundle\CQRSBundle::class => ['all' => true],
+    BBLDN\EntityExistsValidatorBundle\EntityExistsValidatorBundle::class => ['all' => true],
 ];
