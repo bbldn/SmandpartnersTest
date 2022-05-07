@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Domain\Common\Infrastructure\Repository\Base\CommentRepository;
 
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Table(name: "`comments`")]
 #[ORM\Index(name: "created_at_idx", columns: ["created_at"])]
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
@@ -104,5 +105,14 @@ class Comment
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    #[ORM\PreUpdate]
+    #[ORM\PrePersist]
+    public function updatedTimestamp(): void
+    {
+        if (null === $this->getCreatedAt()) {
+            $this->setCreatedAt(new DateTimeImmutable());
+        }
     }
 }
