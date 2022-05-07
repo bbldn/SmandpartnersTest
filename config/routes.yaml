@@ -2,6 +2,6 @@
 #    resource: ../src/Kernel.php
 #    type: annotation
 
-controllers:
-    resource: ../src/Controller/
-    type: annotation
+#controllers:
+#    resource: ../src/Controller/
+#    type: annotation

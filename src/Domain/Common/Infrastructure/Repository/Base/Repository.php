@@ -9,6 +9,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 /**
  * @template T
  * @template-extends ServiceEntityRepository<T>
+ *
+ * @psalm-suppress InvalidTemplateParam
  */
 abstract class Repository extends ServiceEntityRepository
 {
