@@ -4,6 +4,7 @@ namespace App\Domain\Common\Application\EntityToArrayHydrator;
 
 use Psr\Log\LoggerInterface as Logger;
 use Symfony\Component\Serializer\Serializer;
+use App\Domain\Common\Domain\Exception\RestException;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
@@ -26,6 +27,7 @@ class Hydrator
     /**
      * @param object $entity
      * @return array
+     * @throws RestException
      */
     public function hydrateEntity(object $entity): array
     {
@@ -35,6 +37,7 @@ class Hydrator
     /**
      * @param object[] $entityList
      * @return array
+     * @throws RestException
      *
      * @psalm-param list<object> $entityList
      */
@@ -51,6 +54,7 @@ class Hydrator
     /**
      * @param object $entity
      * @return array
+     * @throws RestException
      */
     private function hydrate(object $entity): array
     {
@@ -58,8 +62,7 @@ class Hydrator
             return $this->serializer->normalize($entity);
         } catch (ExceptionInterface $e) {
             $this->logger->error((string)$e);
+            throw new RestException('Неизвестная ошибка обратитесь к администратору');
         }
-
-        return [];
     }
 }

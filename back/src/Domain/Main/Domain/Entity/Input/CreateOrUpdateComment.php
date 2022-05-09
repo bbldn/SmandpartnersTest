@@ -6,13 +6,13 @@ use App\Domain\Common\Domain\Entity\Base\Comment;
 use Symfony\Component\Validator\Constraints as Assert;
 use BBLDN\EntityExistsValidatorBundle\Doctrine\Validator as BBLDNValidator;
 
-#[BBLDNValidator\EntityExists(entityClass: Comment::class, fields: ["id"])]
 class CreateOrUpdateComment
 {
     /* Идентификатор атрибута */
     #[Assert\Sequentially([
         new Assert\NotNull(),
         new Assert\Type("integer"),
+        new BBLDNValidator\EntityExistsByField(entityClass: Comment::class, field: "id")
     ])]
     protected ?int $id = null;
 
