@@ -6,6 +6,7 @@ use Throwable;
 use BBLDN\CQRSBundle\QueryBus\QueryBus;
 use BBLDN\CQRSBundle\CommandBus\CommandBus;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Domain\Main\Application\Query\CommentList;
@@ -42,7 +43,7 @@ class MainController extends AbstractController
         try {
             $data = $entityToArrayHydrator->hydrateArray($commentList);
         } catch (RestException $e) {
-            return $this->json($exceptionFormatter->format($e));
+            return $this->json($exceptionFormatter->format($e), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return $this->json(['data' => $data]);
@@ -66,7 +67,7 @@ class MainController extends AbstractController
         try {
             $data = $commandBus->execute($command);
         } catch (Throwable $e) {
-            return $this->json($exceptionFormatter->format($e));
+            return $this->json($exceptionFormatter->format($e), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return $this->json(['data' => $data]);
@@ -92,14 +93,14 @@ class MainController extends AbstractController
         try {
             $requestData = $request->toArray();
         } catch (JsonException $e) {
-            return $this->json($exceptionFormatter->format($e));
+            return $this->json($exceptionFormatter->format($e), Response::HTTP_BAD_REQUEST);
         }
 
         /** @var CreateOrUpdateCommentRequest $dto */
         try {
             $dto = $arrayToEntityHydrator->hydrateEntity($requestData, CreateOrUpdateCommentRequest::class);
         } catch (RestException|ValidateException $e) {
-            return $this->json($exceptionFormatter->format($e));
+            return $this->json($exceptionFormatter->format($e), Response::HTTP_BAD_REQUEST);
         }
 
         /** @var CreateOrUpdateComment $mutation */
@@ -109,7 +110,7 @@ class MainController extends AbstractController
             $comment = $commandBus->execute(new CreateOrUpdateCommentCommand($mutation));
             $data = $entityToArrayHydrator->hydrateEntity($comment);
         } catch (Throwable $e) {
-            return $this->json($exceptionFormatter->format($e));
+            return $this->json($exceptionFormatter->format($e), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return $this->json(['data' => $data]);
