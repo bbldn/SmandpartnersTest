@@ -149,6 +149,9 @@
     "sebastian/diff": {
         "version": "4.0.4"
     },
+    "symfony/asset": {
+        "version": "v6.0.7"
+    },
     "symfony/cache": {
         "version": "v6.0.8"
     },
