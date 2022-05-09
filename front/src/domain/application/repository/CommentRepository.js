@@ -7,7 +7,7 @@ const CommentRepository = {
             return response.data.data;
         }
 
-        return [];
+        throw response.data;
     },
     removeById: async function (id) {
         const response = await axios.delete(`/comment/${id}`);
@@ -15,7 +15,7 @@ const CommentRepository = {
             return response.data.data;
         }
 
-        return false;
+        throw response.data;
     },
     createOrUpdate: async function (comment) {
         const response = await axios.post(`/comment`, {input: comment});
@@ -23,7 +23,7 @@ const CommentRepository = {
             return response.data.data;
         }
 
-        return null;
+        throw response.data;
     },
 };
 

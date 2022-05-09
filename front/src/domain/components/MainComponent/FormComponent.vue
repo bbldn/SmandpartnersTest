@@ -1,12 +1,13 @@
 <template>
   <div>
     <b-form @reset="onReset" @submit="onSubmit">
-      <b-form-group>
+      <b-form-group :invalid-feedback="form.comment.error" :state="form.comment.error.length > 0 ? false : undefined">
         <b-form-input
             required="required"
             @focus="onShowButtons"
-            v-model="form.comment"
+            v-model="form.comment.value"
             placeholder="Написать комментарий"
+            :state="form.comment.error.length > 0 ? false : undefined"
         ></b-form-input>
       </b-form-group>
 
@@ -21,6 +22,7 @@
 
 <script>
 import CommentRepository from "@/domain/application/repository/CommentRepository";
+import FormHelper from "@/domain/application/helper/formHelper";
 
 export default {
   name: "FormComponent",
@@ -33,30 +35,57 @@ export default {
   data: function () {
     return {
       showButtons: false,
-      form: {
-        comment: '',
-      },
+      form: FormHelper.createForm(),
     };
   },
   methods: {
-    onChange(comment) {
-      this.showButtons = true;
-      this.form = {...comment};
-    },
     onShowButtons() {
       this.showButtons = true;
     },
+    onChange(comment) {
+      this.showButtons = true;
+      this.form = FormHelper.createFormByComment(comment);
+    },
     onReset() {
-      this.form.comment = '';
       this.showButtons = false;
+      this.form = FormHelper.createForm();
+    },
+    onLoadErrors(exception) {
+      if (!exception.exception) {
+        this.$bvModal.msgBoxOk('Произошла неизвестная ошибка');
+
+        return;
+      }
+
+      if ('RestException' === exception.exception) {
+        this.$bvModal.msgBoxOk(exception.message ?? 'Произошла неизвестная ошибка');
+
+        return;
+      }
+
+      if ('ValidateException' === exception.exception) {
+        try {
+          FormHelper.loadErrorsToForm(this.form, exception.errors);
+        } catch (message) {
+          this.$bvModal.msgBoxOk(message ?? 'Произошла неизвестная ошибка');
+        }
+      }
     },
     async onSubmit(e) {
       e.preventDefault();
 
-      const result = await CommentRepository.createOrUpdate(this.form);
+      const mutation = FormHelper.formToMutation(this.form);
+
+      let result = null;
+      try {
+        result = await CommentRepository.createOrUpdate(mutation);
+      } catch (exception) {
+        this.onLoadErrors(exception);
+      }
+
       if (null !== result) {
-        this.onAdd(result);
         this.onReset();
+        this.onAdd(result);
       }
     }
   }

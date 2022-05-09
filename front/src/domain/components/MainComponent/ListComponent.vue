@@ -31,9 +31,12 @@ export default {
     };
   },
   async mounted() {
-    this.commentList = await CommentRepository.getAll();
+    await this.loadCommentList();
   },
   methods: {
+    async loadCommentList() {
+      this.commentList = await CommentRepository.getAll();
+    },
     onEdit(comment) {
       this.onChange(comment);
     },
@@ -57,10 +60,12 @@ export default {
       }
 
       if (true === needAdd) {
-        commentList.push(comment);
+        commentList.unshift(comment);
       }
 
       this.commentList = commentList;
+
+      //await this.loadCommentList();
     },
   }
 }
