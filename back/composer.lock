@@ -55,16 +55,16 @@
         },
         {
             "name": "bbldn/doctrine-entity-exists-validator",
-            "version": "0.1.6",
+            "version": "0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bbldn/doctrine-entity-exists-validator.git",
-                "reference": "6c44e6abfc0650a13e1edbf003070d48d69aa6da"
+                "reference": "ae573c4f59565e74af065c40bbf6d20b8f2b79dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bbldn/doctrine-entity-exists-validator/zipball/6c44e6abfc0650a13e1edbf003070d48d69aa6da",
-                "reference": "6c44e6abfc0650a13e1edbf003070d48d69aa6da",
+                "url": "https://api.github.com/repos/bbldn/doctrine-entity-exists-validator/zipball/ae573c4f59565e74af065c40bbf6d20b8f2b79dd",
+                "reference": "ae573c4f59565e74af065c40bbf6d20b8f2b79dd",
                 "shasum": ""
             },
             "require": {
@@ -101,9 +101,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bbldn/doctrine-entity-exists-validator/issues",
-                "source": "https://github.com/bbldn/doctrine-entity-exists-validator/tree/0.1.6"
+                "source": "https://github.com/bbldn/doctrine-entity-exists-validator/tree/0.1.7"
             },
-            "time": "2022-05-06T08:16:44+00:00"
+            "time": "2022-05-09T09:17:42+00:00"
         },
         {
             "name": "doctrine/annotations",
