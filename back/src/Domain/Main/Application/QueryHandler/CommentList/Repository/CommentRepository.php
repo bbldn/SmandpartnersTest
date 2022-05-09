@@ -10,8 +10,6 @@ interface CommentRepository
      * @return Comment[]
      *
      * @psalm-return list<Comment>
-     *
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function findAll();
+    public function findAndOrderByCreatedAtDESC(): array;
 }

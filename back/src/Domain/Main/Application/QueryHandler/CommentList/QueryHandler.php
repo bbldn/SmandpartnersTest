@@ -26,6 +26,6 @@ class QueryHandler
      */
     public function __invoke(CommentList $query): array
     {
-        return $this->commentRepository->findAll();
+        return $this->commentRepository->findAndOrderByCreatedAtDESC();
     }
 }

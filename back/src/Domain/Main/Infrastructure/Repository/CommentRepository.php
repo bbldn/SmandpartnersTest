@@ -21,4 +21,14 @@ class CommentRepository extends Base implements
     {
         return $this->find($id);
     }
+
+    /**
+     * @return Comment[]
+     *
+     * @psalm-return list<Comment>
+     */
+    public function findAndOrderByCreatedAtDESC(): array
+    {
+        return $this->findBy([], ['createdAt' => 'DESC']);
+    }
 }

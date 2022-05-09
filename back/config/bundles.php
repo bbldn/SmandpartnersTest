@@ -7,4 +7,5 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     BBLDN\CQRSBundle\CQRSBundle::class => ['all' => true],
     BBLDN\EntityExistsValidatorBundle\EntityExistsValidatorBundle::class => ['all' => true],
+    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
 ];
