@@ -1,7 +1,7 @@
 Для запуска необходимо выполнить:
 
 ```bash
-docker-compose -f back/docker-compose.yml up
+docker-compose up
 ```
 
 После чего в браузере необходимо перейти по адресу http://localhost:8080
@@ -9,5 +9,5 @@ docker-compose -f back/docker-compose.yml up
 Для остановки необходимо выполнить:
 
 ```bash
-docker-compose -f back/docker-compose.yml down
+docker-compose down
 ```
