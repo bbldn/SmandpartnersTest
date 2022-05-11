@@ -8,6 +8,7 @@ use Psr\Log\LoggerInterface as Logger;
 use App\Domain\Common\Domain\Exception\RestException;
 use App\Domain\Common\Domain\Exception\ValidateException;
 
+/* Форматирует исключения в формат понятный FrontEnd'у */
 class Formatter
 {
     private Logger $logger;

@@ -8,6 +8,7 @@ use App\Domain\Common\Domain\Exception\RestException;
 use App\Domain\Common\Application\Validator\Validator;
 use App\Domain\Common\Domain\Exception\ValidateException;
 
+/* Декоратор для App\Domain\Common\Application\ArrayToEntityHydrator\Hydrator, добавляющий валидацию после преобразования в объект */
 class HydratorWithValidator
 {
     private Logger $logger;

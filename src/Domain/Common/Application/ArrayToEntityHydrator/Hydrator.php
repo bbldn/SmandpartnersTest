@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 
+/* Преобразовывает массив в выбранный объект с помощью setter'ов */
 class Hydrator
 {
     private Logger $logger;

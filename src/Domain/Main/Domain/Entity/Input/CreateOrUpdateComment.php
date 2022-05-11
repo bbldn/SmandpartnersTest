@@ -6,6 +6,7 @@ use App\Domain\Common\Domain\Entity\Base\Comment;
 use Symfony\Component\Validator\Constraints as Assert;
 use BBLDN\EntityExistsValidatorBundle\Doctrine\Validator as BBLDNValidator;
 
+/* DTO для создания и удаления комментария */
 class CreateOrUpdateComment
 {
     /* Идентификатор атрибута */

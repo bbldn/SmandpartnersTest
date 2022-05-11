@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use App\Domain\Main\Domain\Entity\Input\CreateOrUpdateComment;
 use App\Domain\Main\Application\CommandHandler\CreateOrUpdateComment\CommentCreator\Repository\CommentRepository;
 
+/* Создаёт или обновляет комментарий */
 class Creator
 {
     private EntityManager $entityManager;
@@ -27,14 +28,15 @@ class Creator
     }
 
     /**
+     * Возвращает комментарий который необходимо заполнить данными из CreateOrUpdateComment
+     *
      * @param CreateOrUpdateComment $mutation
      * @return Comment
      */
     private function getCommentByMutation(CreateOrUpdateComment $mutation): Comment
     {
-        /** @var int $id */
-        $id = $mutation->getId();
-        if ($id < 1) {
+        $id = (int)$mutation->getId();
+        if ($id < 1) { //Если идентификатор меньше 1, значит создаём новый идентификатор
             $comment = new Comment();
             $this->entityManager->persist($comment);
 
@@ -46,6 +48,11 @@ class Creator
     }
 
     /**
+     * Тут стоит обратить внимание, что в этот метод необходимо передавать провалидированный
+     * CreateOrUpdateComment (о чём свидетельствует имея параметра $validatedMutation)
+     * В реальной системе стоило бы обернуть CreateOrUpdateComment во враппер CreateOrUpdateCommentValidated
+     * То сейчас я этого делать не стал, для упрощения
+     *
      * @param CreateOrUpdateComment $validatedMutation
      * @return Comment
      */

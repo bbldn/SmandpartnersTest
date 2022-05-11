@@ -5,6 +5,7 @@ namespace App\Domain\Main\Domain\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Domain\Main\Domain\Entity\Input\CreateOrUpdateComment;
 
+/* DTO для валидации запроса на создание и удаления комментария */
 class CreateOrUpdateCommentRequest
 {
     #[Assert\NotNull]

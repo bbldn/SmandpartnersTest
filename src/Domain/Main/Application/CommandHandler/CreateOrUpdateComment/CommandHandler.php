@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use App\Domain\Main\Application\Command\CreateOrUpdateComment;
 use App\Domain\Main\Application\CommandHandler\CreateOrUpdateComment\CommentCreator\Creator as CommentCreator;
 
+/* Обработчик для App\Domain\Main\Application\Command\CreateOrUpdateComment */
 class CommandHandler
 {
     private EntityManager $entityManager;
@@ -32,9 +33,9 @@ class CommandHandler
      */
     public function __invoke(CreateOrUpdateComment $command): Comment
     {
-        $comment = $this->commentCreator->createOrUpdate($command->getMutation());
+        $comment = $this->commentCreator->createOrUpdate($command->getMutation()); //Обновляем или создаём комментарий
 
-        $this->entityManager->flush();
+        $this->entityManager->flush(); //Сохраняем изменения в базу
 
         return $comment;
     }

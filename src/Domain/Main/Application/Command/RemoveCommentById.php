@@ -6,6 +6,7 @@ use BBLDN\CQRSBundle\CommandBus\Command;
 use BBLDN\CQRSBundle\CommandBus\Annotation as CQRS;
 use App\Domain\Main\Application\CommandHandler\RemoveCommentById\CommandHandler;
 
+/* Команда удаления комментария */
 #[CQRS\CommandHandler(class: CommandHandler::class)]
 class RemoveCommentById implements Command
 {

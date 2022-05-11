@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use App\Domain\Main\Application\Command\RemoveCommentById;
 use App\Domain\Main\Application\CommandHandler\RemoveCommentById\CommentRemover\Remover as CommentRemover;
 
+/* Обработчик для App\Domain\Main\Application\Command\RemoveCommentById */
 class CommandHandler
 {
     private EntityManager $entityManager;
@@ -31,9 +32,9 @@ class CommandHandler
      */
     public function __invoke(RemoveCommentById $command): bool
     {
-        $result = $this->commentRemover->removeById($command->getId());
-        if (true === $result) {
-            $this->entityManager->flush();
+        $result = $this->commentRemover->removeById($command->getId()); //Пытаемся найти и удалить комментарий
+        if (true === $result) { // Если нашли и удалили
+            $this->entityManager->flush(); //Сохраняем изменения в базу
         }
 
         return $result;

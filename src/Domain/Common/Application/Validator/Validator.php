@@ -10,6 +10,7 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Validator\ContextualValidatorInterface;
 
+/* Декоратор для Symfony\Component\Validator\Validator\ValidatorInterface, при нахождении ошибок выбрасывает исключение App\Domain\Common\Domain\Exception\ValidateException */
 class Validator implements ValidatorInterface
 {
     private ValidatorInterface $validator;

@@ -5,6 +5,7 @@ namespace App\Domain\Main\Application\CommandHandler\RemoveCommentById\CommentRe
 use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use App\Domain\Main\Application\CommandHandler\RemoveCommentById\CommentRemover\Repository\CommentRepository;
 
+/* Ищет и удаляет комментарий */
 class Remover
 {
     private EntityManager $entityManager;
@@ -30,12 +31,12 @@ class Remover
      */
     public function removeById(int $id): bool
     {
-        $comment = $this->commentRepository->findOne($id);
-        if (null === $comment) {
-            return false;
+        $comment = $this->commentRepository->findOne($id); //Ищем комментарий
+        if (null === $comment) { //Если на находим
+            return false; //То выходим
         }
 
-        $this->entityManager->remove($comment);
+        $this->entityManager->remove($comment); //Иначе удаляем
 
         return true;
     }

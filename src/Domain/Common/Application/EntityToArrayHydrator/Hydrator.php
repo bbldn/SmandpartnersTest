@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 
+/* Преобразовывает сущность в массив */
 class Hydrator
 {
     private Logger $logger;

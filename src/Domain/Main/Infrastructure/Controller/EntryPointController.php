@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/* Контроллер, который возвращает точку входа в приложение */
 class EntryPointController extends AbstractController
 {
     /**
