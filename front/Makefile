@@ -9,6 +9,8 @@ build:
 	npm run build
 
 install:
+	mkdir -p $(public_js_path)
+	mkdir -p $(public_css_path)
 	cp $(dist_js_path)/app.js $(public_js_path)/index.js
 	cp $(dist_js_path)/app.js.map $(public_js_path)/index.js.map
 	cp $(dist_js_path)/chunk-vendors.js $(public_js_path)/vendors.js
