@@ -8,6 +8,9 @@ RUN \
     docker-php-ext-install zip; \
     docker-php-ext-install pdo_mysql
 
+RUN apt update; \
+    apt install nodejs npm -y
+
 COPY docker/php/run.sh /root
 
 CMD "php-fpm"

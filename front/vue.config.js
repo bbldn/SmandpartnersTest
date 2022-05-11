@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+    filenameHashing: false,
     configureWebpack: {
         resolve: {
             extensions: ['.js', '.vue', '.json'],
